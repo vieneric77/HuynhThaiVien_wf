@@ -1,0 +1,16 @@
+V:\HuynhThaiVien\Form4\bin\Debug\net8.0-windows\Form4.exe
+V:\HuynhThaiVien\Form4\bin\Debug\net8.0-windows\Form4.deps.json
+V:\HuynhThaiVien\Form4\bin\Debug\net8.0-windows\Form4.runtimeconfig.json
+V:\HuynhThaiVien\Form4\bin\Debug\net8.0-windows\Form4.dll
+V:\HuynhThaiVien\Form4\bin\Debug\net8.0-windows\Form4.pdb
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.Form4.resources
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.csproj.GenerateResource.cache
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.GeneratedMSBuildEditorConfig.editorconfig
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.AssemblyInfoInputs.cache
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.AssemblyInfo.cs
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.csproj.CoreCompileInputs.cache
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.dll
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\refint\Form4.dll
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.pdb
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\Form4.genruntimeconfig.cache
+V:\HuynhThaiVien\Form4\obj\Debug\net8.0-windows\ref\Form4.dll

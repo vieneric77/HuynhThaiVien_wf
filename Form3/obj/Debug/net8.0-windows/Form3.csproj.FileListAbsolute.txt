@@ -1,0 +1,16 @@
+V:\HuynhThaiVien\Form3\bin\Debug\net8.0-windows\Form3.exe
+V:\HuynhThaiVien\Form3\bin\Debug\net8.0-windows\Form3.deps.json
+V:\HuynhThaiVien\Form3\bin\Debug\net8.0-windows\Form3.runtimeconfig.json
+V:\HuynhThaiVien\Form3\bin\Debug\net8.0-windows\Form3.dll
+V:\HuynhThaiVien\Form3\bin\Debug\net8.0-windows\Form3.pdb
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.Form3.resources
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.csproj.GenerateResource.cache
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.GeneratedMSBuildEditorConfig.editorconfig
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.AssemblyInfoInputs.cache
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.AssemblyInfo.cs
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.csproj.CoreCompileInputs.cache
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.dll
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\refint\Form3.dll
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.pdb
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\Form3.genruntimeconfig.cache
+V:\HuynhThaiVien\Form3\obj\Debug\net8.0-windows\ref\Form3.dll

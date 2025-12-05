@@ -1,0 +1,174 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {
+      "Form1/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form1.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form1.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form2/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form2.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form2.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form3/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form3.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form3.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form4/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form4.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form4.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "Form1/1.0.0": {
+      "type": "project",
+      "path": "../Form1/Form1.csproj",
+      "msbuildProject": "../Form1/Form1.csproj"
+    },
+    "Form2/1.0.0": {
+      "type": "project",
+      "path": "../Form2/Form2.csproj",
+      "msbuildProject": "../Form2/Form2.csproj"
+    },
+    "Form3/1.0.0": {
+      "type": "project",
+      "path": "../Form3/Form3.csproj",
+      "msbuildProject": "../Form3/Form3.csproj"
+    },
+    "Form4/1.0.0": {
+      "type": "project",
+      "path": "../Form4/Form4.csproj",
+      "msbuildProject": "../Form4/Form4.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": [
+      "Form1 >= 1.0.0",
+      "Form2 >= 1.0.0",
+      "Form3 >= 1.0.0",
+      "Form4 >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Vien\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "V:\\HuynhThaiVien\\Menu\\Menu.csproj",
+      "projectName": "Menu",
+      "projectPath": "V:\\HuynhThaiVien\\Menu\\Menu.csproj",
+      "packagesPath": "C:\\Users\\Vien\\.nuget\\packages\\",
+      "outputPath": "V:\\HuynhThaiVien\\Menu\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Vien\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {
+            "V:\\HuynhThaiVien\\Form1\\Form1.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form1\\Form1.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form2\\Form2.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form2\\Form2.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form3\\Form3.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form3\\Form3.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form4\\Form4.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form4\\Form4.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
