@@ -53,6 +53,45 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WindowsForms"
         ]
+      },
+      "Form5/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form5.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form5.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form6/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form6.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form6.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form7/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form7.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form7.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
       }
     }
   },
@@ -76,6 +115,21 @@
       "type": "project",
       "path": "../Form4/Form4.csproj",
       "msbuildProject": "../Form4/Form4.csproj"
+    },
+    "Form5/1.0.0": {
+      "type": "project",
+      "path": "../Form5/Form5.csproj",
+      "msbuildProject": "../Form5/Form5.csproj"
+    },
+    "Form6/1.0.0": {
+      "type": "project",
+      "path": "../Form6/Form6.csproj",
+      "msbuildProject": "../Form6/Form6.csproj"
+    },
+    "Form7/1.0.0": {
+      "type": "project",
+      "path": "../Form7/Form7.csproj",
+      "msbuildProject": "../Form7/Form7.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -83,7 +137,10 @@
       "Form1 >= 1.0.0",
       "Form2 >= 1.0.0",
       "Form3 >= 1.0.0",
-      "Form4 >= 1.0.0"
+      "Form4 >= 1.0.0",
+      "Form5 >= 1.0.0",
+      "Form6 >= 1.0.0",
+      "Form7 >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -129,6 +186,15 @@
             },
             "V:\\HuynhThaiVien\\Form4\\Form4.csproj": {
               "projectPath": "V:\\HuynhThaiVien\\Form4\\Form4.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form5\\Form5.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form5\\Form5.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form6\\Form6.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form6\\Form6.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form7\\Form7.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form7\\Form7.csproj"
             }
           }
         }

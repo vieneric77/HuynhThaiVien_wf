@@ -13,6 +13,9 @@
     <ProjectReference Include="..\Form2\Form2.csproj" />
 	<ProjectReference Include="..\Form3\Form3.csproj" />
 	<ProjectReference Include="..\Form4\Form4.csproj" />
+	<ProjectReference Include="..\Form5\Form5.csproj" />
+	<ProjectReference Include="..\Form6\Form6.csproj" />
+	<ProjectReference Include="..\Form7\Form7.csproj" />
   </ItemGroup>
 
 </Project>

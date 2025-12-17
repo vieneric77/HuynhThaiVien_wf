@@ -14,3 +14,4 @@ V:\HuynhThaiVien\Form1\obj\Debug\net8.0-windows\refint\Form1.dll
 V:\HuynhThaiVien\Form1\obj\Debug\net8.0-windows\Form1.pdb
 V:\HuynhThaiVien\Form1\obj\Debug\net8.0-windows\Form1.genruntimeconfig.cache
 V:\HuynhThaiVien\Form1\obj\Debug\net8.0-windows\ref\Form1.dll
+V:\HuynhThaiVien\Form1\obj\Debug\net8.0-windows\Form1.sourcelink.json

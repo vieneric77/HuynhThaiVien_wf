@@ -77,14 +77,14 @@ namespace Form1
             string name = cb_Faculty.SelectedValue.ToString();
             tbDisplay.Text = "Bạn đã chọn khoa có tên: " + name;
         }
-        //private void btExit_Click(object sender, EventArgs e)
-        //{
-        //    if (menuForm != null)
-        //    {
-        //        menuForm.Show();
-        //    }
+        private void btExit_Click(object sender, EventArgs e)
+        {
+            if (menuForm != null)
+            {
+                menuForm.Show();
+            }
 
-        //    this.Close();
-        //}
+            this.Close();
+        }
     }
 }
