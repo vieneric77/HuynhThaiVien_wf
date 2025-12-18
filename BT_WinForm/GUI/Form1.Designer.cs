@@ -1,14 +1,14 @@
-﻿namespace BT_WinForm
+﻿namespace BT_WinForm.GUI
 {
     partial class Form1
     {
         /// <summary>
-        ///  Required designer variable.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        ///  Clean up any resources being used.
+        /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,115 +23,97 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            btn1 = new Button();
+            checkBox1 = new CheckBox();
+            radioButton1 = new RadioButton();
+            numericUpDown1 = new NumericUpDown();
+            lb1 = new Label();
+            txtBox1 = new TextBox();
+            comboBox1 = new ComboBox();
+            listBox1 = new ListBox();
+            button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            bt7 = new Button();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
-            // 
-            // btn1
-            // 
-            btn1.Location = new Point(22, 86);
-            btn1.Name = "btn1";
-            btn1.Size = new Size(151, 56);
-            btn1.TabIndex = 0;
-            btn1.Text = "Profile";
-            btn1.UseVisualStyleBackColor = true;
-            btn1.Click += btn1_Click;
-            // 
+
+            // lb1 - Name
+            lb1.AutoSize = true;
+            lb1.Location = new Point(20, 25);
+            lb1.Text = "Name";
+
+            // txtBox1
+            txtBox1.Location = new Point(120, 22);
+            txtBox1.Size = new Size(230, 27);
+            txtBox1.TextChanged += txtBox1_TextChanged;
+
+            // numericUpDown1
+            numericUpDown1.Location = new Point(120, 60);
+            numericUpDown1.Size = new Size(120, 27);
+
+            // checkBox1
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(20, 100);
+            checkBox1.Text = "CheckBox";
+
+            // radioButton1
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(150, 100);
+            radioButton1.Text = "RadioButton";
+
+            // comboBox1
+            comboBox1.Location = new Point(20, 135);
+            comboBox1.Size = new Size(330, 28);
+
+            // listBox1
+            listBox1.FormattingEnabled = true;
+            listBox1.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H" });
+            listBox1.Location = new Point(20, 175);
+            listBox1.Size = new Size(200, 104);
+
+            // button1
+            button1.Location = new Point(80, 295);
+            button1.Size = new Size(80, 30);
+            button1.Text = "OK";
+
             // button2
-            // 
-            button2.Location = new Point(273, 86);
-            button2.Name = "button2";
-            button2.Size = new Size(151, 56);
-            button2.TabIndex = 1;
-            button2.Text = "Year and Phone Number";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(509, 86);
-            button3.Name = "button3";
-            button3.Size = new Size(151, 56);
-            button3.TabIndex = 2;
-            button3.Text = "Caculator";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(22, 250);
-            button4.Name = "button4";
-            button4.Size = new Size(151, 56);
-            button4.TabIndex = 3;
-            button4.Text = "Caculator_2";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(273, 250);
-            button5.Name = "button5";
-            button5.Size = new Size(151, 56);
-            button5.TabIndex = 4;
-            button5.Text = "Simple Caculator";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click_1;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(509, 250);
-            button6.Name = "button6";
-            button6.Size = new Size(151, 56);
-            button6.TabIndex = 5;
-            button6.Text = "Khoa";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click_1;
-            // 
-            // bt7
-            // 
-            bt7.Location = new Point(22, 357);
-            bt7.Name = "bt7";
-            bt7.Size = new Size(151, 65);
-            bt7.TabIndex = 6;
-            bt7.Text = "Giảm giá";
-            bt7.UseVisualStyleBackColor = true;
-            bt7.Click += bt7_Click;
-            // 
-            // Form1
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(bt7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            button2.Location = new Point(190, 295);
+            button2.Size = new Size(80, 30);
+            button2.Text = "Cancel";
+
+            // Form2
+            ClientSize = new Size(380, 350);
+            Controls.Add(lb1);
+            Controls.Add(txtBox1);
+            Controls.Add(numericUpDown1);
+            Controls.Add(checkBox1);
+            Controls.Add(radioButton1);
+            Controls.Add(comboBox1);
+            Controls.Add(listBox1);
+            Controls.Add(button1);
             Controls.Add(button2);
-            Controls.Add(btn1);
-            Name = "Form1";
-            Text = "Form1";
+            Name = "Form2";
+            Text = "Form2";
+
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
+
 
         #endregion
 
-        private Button btn1;
+        private CheckBox checkBox1;
+        private RadioButton radioButton1;
+        private NumericUpDown numericUpDown1;
+        private Label lb1;
+        private TextBox txtBox1;
+        private ComboBox comboBox1;
+        private ListBox listBox1;
+        private Button button1;
         private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button bt7;
     }
 }

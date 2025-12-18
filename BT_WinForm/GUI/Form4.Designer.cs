@@ -1,6 +1,6 @@
 ﻿namespace BT_WinForm.GUI
 {
-    partial class Khoa
+    partial class Form4
     {
         /// <summary>
         /// Required designer variable.
@@ -33,59 +33,50 @@
             button1 = new Button();
             btOK = new Button();
             SuspendLayout();
-            // 
+
             // cb_Faculty
-            // 
-            cb_Faculty.FormattingEnabled = true;
-            cb_Faculty.Items.AddRange(new object[] {});
-            cb_Faculty.Location = new Point(90, 96);
+            cb_Faculty.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_Faculty.Location = new Point(20, 20);
             cb_Faculty.Name = "cb_Faculty";
-            cb_Faculty.Size = new Size(602, 28);
-            cb_Faculty.TabIndex = 0;
+            cb_Faculty.Size = new Size(300, 28);
             cb_Faculty.SelectedValueChanged += cb_Faculty_SelectedValueChanged;
-            // 
+
             // tbDisplay
-            // 
-            tbDisplay.Location = new Point(90, 164);
+            tbDisplay.Location = new Point(20, 60);
             tbDisplay.Multiline = true;
             tbDisplay.Name = "tbDisplay";
-            tbDisplay.Size = new Size(602, 145);
-            tbDisplay.TabIndex = 1;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(401, 393);
+            tbDisplay.Size = new Size(300, 120);
+
+            // button1 (nếu chưa dùng có thể ẩn)
+            button1.Location = new Point(20, 195);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
+            button1.Size = new Size(90, 30);
+            button1.Text = "Thoát";
             button1.UseVisualStyleBackColor = true;
-            // 
+            // button1.Click += button1_Click; // nếu có xử lý thì mở lại
+
             // btOK
-            // 
-            btOK.Location = new Point(625, 397);
+            btOK.Location = new Point(230, 195);
             btOK.Name = "btOK";
-            btOK.Size = new Size(94, 29);
-            btOK.TabIndex = 3;
+            btOK.Size = new Size(90, 30);
             btOK.Text = "OK";
             btOK.UseVisualStyleBackColor = true;
             btOK.Click += btOK_Click;
-            // 
-            // Khoa
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btOK);
-            Controls.Add(button1);
-            Controls.Add(tbDisplay);
+
+            // Form5
+            ClientSize = new Size(350, 250);
             Controls.Add(cb_Faculty);
-            Name = "Khoa";
+            Controls.Add(tbDisplay);
+            Controls.Add(button1);
+            Controls.Add(btOK);
+            Name = "Form5";
             Text = "Khoa";
-            this.Load += new System.EventHandler(this.Khoa_Load);
+            Load += Khoa_Load;
+
             ResumeLayout(false);
             PerformLayout();
         }
+
 
         #endregion
 

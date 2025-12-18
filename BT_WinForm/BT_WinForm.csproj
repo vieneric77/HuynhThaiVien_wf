@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="GUI\Caculator_2.cs">
+    <Compile Update="GUI\Form7.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

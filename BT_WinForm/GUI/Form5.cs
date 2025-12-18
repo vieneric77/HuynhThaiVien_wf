@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace BT_WinForm.GUI
 {
-    public partial class Simple_Caculator : Form
+    public partial class Form5 : Form
     {
         decimal wokingMemory = 0;
         string opr = "";
-        public Simple_Caculator()
-         
+        public Form5()
+
         {
             InitializeComponent();
             bt0.Click += new EventHandler(bt0_Click);
@@ -52,7 +52,7 @@ namespace BT_WinForm.GUI
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-         opr = btnPlus.Text;
+            opr = btnPlus.Text;
             wokingMemory = decimal.Parse(tbDisplay.Text);
             tbDisplay.Clear();
 
@@ -66,14 +66,19 @@ namespace BT_WinForm.GUI
         private void btEquals_Click(object sender, EventArgs e)
         {
             decimal secondValue = decimal.Parse(tbDisplay.Text);
-            if( opr == "+")
-                tbDisplay.Text = (wokingMemory +  secondValue).ToString ();
+            if (opr == "+")
+                tbDisplay.Text = (wokingMemory + secondValue).ToString();
             if (opr == "*")
                 tbDisplay.Text = (wokingMemory * secondValue).ToString();
 
         }
 
         private void btDoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form6_Load(object sender, EventArgs e)
         {
 
         }

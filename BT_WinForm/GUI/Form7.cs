@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace BT_WinForm.GUI
 {
-    public partial class Caculator_2 : Form
+    public partial class Form7 : Form
     {
 
-        public Caculator_2()
+        public Form7()
         {
             InitializeComponent();
         }

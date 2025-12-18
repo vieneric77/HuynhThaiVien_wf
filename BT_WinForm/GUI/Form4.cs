@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace BT_WinForm.GUI
 {
-    public partial class Khoa : Form
+    public partial class Form4 : Form
     {
-        public Khoa()
+        public Form4()
         {
             InitializeComponent();
         }

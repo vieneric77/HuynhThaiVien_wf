@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BT_WinForm.GUI
 {
-    public partial class Caculator : Form
+    public partial class Form6 : Form
     {
-        public Caculator()
+        public Form6()
         {
             InitializeComponent();
         }

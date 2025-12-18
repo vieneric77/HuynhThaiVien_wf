@@ -7,24 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace BT_WinForm.GUI
 {
     public partial class Form2 : Form
     {
+
         public Form2()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void tbYear_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
-
-        private void txtBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void tbYear_Validating (object sender, CancelEventArgs e) { 
+        int year = int.Parse(tbYear.Text);
+            if(year < 2000) 
+                e.Cancel = true;
+            
+                }
     }
 }

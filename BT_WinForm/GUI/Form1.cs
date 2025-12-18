@@ -1,6 +1,14 @@
-using BT_WinForm.GUI;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace BT_WinForm
+namespace BT_WinForm.GUI
 {
     public partial class Form1 : Form
     {
@@ -9,51 +17,14 @@ namespace BT_WinForm
             InitializeComponent();
         }
 
-        private void btn1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            {
-                Form f = new Form2();
-                f.Show();
-
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form f = new Form3();
-            f.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form f = new Caculator();
-            f.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Form f = new Caculator_2();
-            f.Show();
 
         }
 
-        private void button5_Click_1(object sender, EventArgs e)
+        private void txtBox1_TextChanged(object sender, EventArgs e)
         {
-            Form f = new Simple_Caculator();
-            f.Show();
-        }
 
-        private void button6_Click_1(object sender, EventArgs e)
-        {
-            Form f = new Khoa();
-            f.Show();
-        }
-
-        private void bt7_Click(object sender, EventArgs e)
-        {
-            Form f = new Article14();
-            f.Show();
         }
     }
-
 }
