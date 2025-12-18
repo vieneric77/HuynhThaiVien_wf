@@ -59,7 +59,18 @@ namespace Menu
             f.Show();
             this.Hide();
         }
-
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Form8.Form8 f = new Form8.Form8(this);
+            f.Show();
+            this.Hide();
+        }
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Form9.Form9 f = new Form9.Form9(this);
+            f.Show();
+            this.Hide();
+        }
 
     }
 }

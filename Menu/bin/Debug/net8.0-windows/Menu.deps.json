@@ -14,7 +14,9 @@
           "Form4": "1.0.0",
           "Form5": "1.0.0",
           "Form6": "1.0.0",
-          "Form7": "1.0.0"
+          "Form7": "1.0.0",
+          "Form8": "1.0.0",
+          "Form9": "1.0.0"
         },
         "runtime": {
           "Menu.dll": {}
@@ -75,6 +77,22 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Form8/1.0.0": {
+        "runtime": {
+          "Form8.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Form9/1.0.0": {
+        "runtime": {
+          "Form9.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -115,6 +133,16 @@
       "sha512": ""
     },
     "Form7/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Form8/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Form9/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

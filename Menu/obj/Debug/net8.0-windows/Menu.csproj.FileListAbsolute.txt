@@ -52,3 +52,13 @@ V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form7.runtimeconfig.json
 V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form7.exe
 V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form7.dll
 V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form7.pdb
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form8.deps.json
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form8.runtimeconfig.json
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form8.exe
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form8.dll
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form8.pdb
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form9.deps.json
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form9.runtimeconfig.json
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form9.exe
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form9.dll
+V:\HuynhThaiVien\Menu\bin\Debug\net8.0-windows\Form9.pdb

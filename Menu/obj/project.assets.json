@@ -92,6 +92,32 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WindowsForms"
         ]
+      },
+      "Form8/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form8.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form8.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "Form9/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Form9.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Form9.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
       }
     }
   },
@@ -130,6 +156,16 @@
       "type": "project",
       "path": "../Form7/Form7.csproj",
       "msbuildProject": "../Form7/Form7.csproj"
+    },
+    "Form8/1.0.0": {
+      "type": "project",
+      "path": "../Form8/Form8.csproj",
+      "msbuildProject": "../Form8/Form8.csproj"
+    },
+    "Form9/1.0.0": {
+      "type": "project",
+      "path": "../Form9/Form9.csproj",
+      "msbuildProject": "../Form9/Form9.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -140,7 +176,9 @@
       "Form4 >= 1.0.0",
       "Form5 >= 1.0.0",
       "Form6 >= 1.0.0",
-      "Form7 >= 1.0.0"
+      "Form7 >= 1.0.0",
+      "Form8 >= 1.0.0",
+      "Form9 >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -195,6 +233,12 @@
             },
             "V:\\HuynhThaiVien\\Form7\\Form7.csproj": {
               "projectPath": "V:\\HuynhThaiVien\\Form7\\Form7.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form8\\Form8.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form8\\Form8.csproj"
+            },
+            "V:\\HuynhThaiVien\\Form9\\Form9.csproj": {
+              "projectPath": "V:\\HuynhThaiVien\\Form9\\Form9.csproj"
             }
           }
         }
