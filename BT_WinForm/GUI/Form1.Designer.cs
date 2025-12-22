@@ -1,119 +1,139 @@
-﻿namespace BT_WinForm.GUI
+﻿namespace BT_WinForm
 {
     partial class Form1
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private Label label1;
+        private TextBox txtName;
+        private NumericUpDown numericUpDown1;
+        private CheckBox checkBox1;
+        private RadioButton radioButton1;
+        private ComboBox comboBox1;
+        private DateTimePicker dateTimePicker1;
+        private ListBox listBox1;
+        private Button btnOK1;
+        private Button btnOK2;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            txtName = new TextBox();
+            numericUpDown1 = new NumericUpDown();
             checkBox1 = new CheckBox();
             radioButton1 = new RadioButton();
-            numericUpDown1 = new NumericUpDown();
-            lb1 = new Label();
-            txtBox1 = new TextBox();
             comboBox1 = new ComboBox();
+            dateTimePicker1 = new DateTimePicker();
             listBox1 = new ListBox();
-            button1 = new Button();
-            button2 = new Button();
+            btnOK1 = new Button();
+            btnOK2 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
-
-            // lb1 - Name
-            lb1.AutoSize = true;
-            lb1.Location = new Point(20, 25);
-            lb1.Text = "Name";
-
-            // txtBox1
-            txtBox1.Location = new Point(120, 22);
-            txtBox1.Size = new Size(230, 27);
-            txtBox1.TextChanged += txtBox1_TextChanged;
-
+            // 
+            // label1
+            // 
+            label1.Location = new Point(20, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 23);
+            label1.TabIndex = 0;
+            label1.Text = "Name";
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(95, 18);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(225, 27);
+            txtName.TabIndex = 1;
+            // 
             // numericUpDown1
-            numericUpDown1.Location = new Point(120, 60);
-            numericUpDown1.Size = new Size(120, 27);
-
+            // 
+            numericUpDown1.Location = new Point(345, 18);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(114, 27);
+            numericUpDown1.TabIndex = 2;
+            // 
             // checkBox1
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(20, 100);
-            checkBox1.Text = "CheckBox";
-
+            // 
+            checkBox1.Location = new Point(20, 55);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(104, 24);
+            checkBox1.TabIndex = 3;
+            checkBox1.Text = "checkBox1";
+            // 
             // radioButton1
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(150, 100);
-            radioButton1.Text = "RadioButton";
-
+            // 
+            radioButton1.Location = new Point(151, 55);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(104, 24);
+            radioButton1.TabIndex = 4;
+            radioButton1.Text = "radioButton1";
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
             // comboBox1
-            comboBox1.Location = new Point(20, 135);
-            comboBox1.Size = new Size(330, 28);
-
+            // 
+            comboBox1.Items.AddRange(new object[] { "Item 1", "Item 2", "Item 3" });
+            comboBox1.Location = new Point(20, 85);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(250, 28);
+            comboBox1.TabIndex = 5;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(20, 120);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(250, 27);
+            dateTimePicker1.TabIndex = 6;
+            // 
             // listBox1
-            listBox1.FormattingEnabled = true;
-            listBox1.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F", "G", "H" });
-            listBox1.Location = new Point(20, 175);
-            listBox1.Size = new Size(200, 104);
-
-            // button1
-            button1.Location = new Point(80, 295);
-            button1.Size = new Size(80, 30);
-            button1.Text = "OK";
-
-            // button2
-            button2.Location = new Point(190, 295);
-            button2.Size = new Size(80, 30);
-            button2.Text = "Cancel";
-
-            // Form2
-            ClientSize = new Size(380, 350);
-            Controls.Add(lb1);
-            Controls.Add(txtBox1);
+            // 
+            listBox1.Items.AddRange(new object[] { "A", "B", "C", "D", "E", "F" });
+            listBox1.Location = new Point(20, 155);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(200, 84);
+            listBox1.TabIndex = 7;
+            // 
+            // btnOK1
+            // 
+            btnOK1.Location = new Point(270, 270);
+            btnOK1.Name = "btnOK1";
+            btnOK1.Size = new Size(89, 27);
+            btnOK1.TabIndex = 8;
+            btnOK1.Text = "OK";
+            btnOK1.Click += btnOK_Click;
+            // 
+            // btnOK2
+            // 
+            btnOK2.Location = new Point(375, 270);
+            btnOK2.Name = "btnOK2";
+            btnOK2.Size = new Size(84, 27);
+            btnOK2.TabIndex = 9;
+            btnOK2.Text = "OK";
+            // 
+            // Form1
+            // 
+            ClientSize = new Size(482, 320);
+            Controls.Add(label1);
+            Controls.Add(txtName);
             Controls.Add(numericUpDown1);
             Controls.Add(checkBox1);
             Controls.Add(radioButton1);
             Controls.Add(comboBox1);
+            Controls.Add(dateTimePicker1);
             Controls.Add(listBox1);
-            Controls.Add(button1);
-            Controls.Add(button2);
-            Name = "Form2";
-            Text = "Form2";
-
+            Controls.Add(btnOK1);
+            Controls.Add(btnOK2);
+            Name = "Form1";
+            Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
-
-
-        #endregion
-
-        private CheckBox checkBox1;
-        private RadioButton radioButton1;
-        private NumericUpDown numericUpDown1;
-        private Label lb1;
-        private TextBox txtBox1;
-        private ComboBox comboBox1;
-        private ListBox listBox1;
-        private Button button1;
-        private Button button2;
     }
 }

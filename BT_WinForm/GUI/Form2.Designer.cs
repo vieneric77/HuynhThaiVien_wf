@@ -2,20 +2,16 @@
 {
     partial class Form2
     {
-       
         private System.ComponentModel.IContainer components = null;
 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
 
         private void InitializeComponent()
         {
@@ -37,7 +33,7 @@
             tbYear.Name = "tbYear";
             tbYear.Size = new Size(200, 27);
 
-            // label2 - Phone Number
+            // label2 - Phone
             label2.AutoSize = true;
             label2.Location = new Point(20, 75);
             label2.Name = "label2";
@@ -49,19 +45,18 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(200, 27);
 
-            // Form3
+            // Form2
             ClientSize = new Size(380, 140);
             Controls.Add(label1);
             Controls.Add(tbYear);
             Controls.Add(label2);
             Controls.Add(textBox2);
-            Name = "Form3";
-            Text = "Form3";
+            Name = "Form2";
+            Text = "Form2";
 
             ResumeLayout(false);
             PerformLayout();
         }
-
 
         #endregion
 

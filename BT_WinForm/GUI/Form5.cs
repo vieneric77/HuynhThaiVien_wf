@@ -18,14 +18,6 @@ namespace BT_WinForm.GUI
 
         {
             InitializeComponent();
-            bt0.Click += new EventHandler(bt0_Click);
-            bt1.Click += new EventHandler(bt1_Click);
-            bt2.Click += new EventHandler(bt2_Click);
-            bt3.Click += new EventHandler(bt3_Click);
-            btMul.Click += new EventHandler(btMul_Click);
-            btEquals.Click += new EventHandler(btEquals_Click);
-            btnPlus.Click += new EventHandler(btnPlus_Click);
-            btDoc.Click += new EventHandler(btDoc_Click);
         }
 
         private void bt0_Click(object sender, EventArgs e)
@@ -78,7 +70,7 @@ namespace BT_WinForm.GUI
 
         }
 
-        private void Form6_Load(object sender, EventArgs e)
+        private void Form5_Load(object sender, EventArgs e)
         {
 
         }

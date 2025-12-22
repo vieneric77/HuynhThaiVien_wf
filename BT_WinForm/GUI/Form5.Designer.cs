@@ -21,11 +21,6 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             tbDisplay = new TextBox();
@@ -100,13 +95,13 @@
             ClientSize = new Size(310, 210);
             Controls.AddRange(new Control[]
             {
-        tbDisplay, bt0, bt1, bt2, bt3,
-        btnPlus, btMul, btDoc, btEquals
+                 tbDisplay, bt0, bt1, bt2, bt3,
+                 btnPlus, btMul, btDoc, btEquals
             });
 
-            Name = "Form6";
+            Name = "Form5";
             Text = "Simple Calculator";
-            Load += Form6_Load;
+            Load += Form5_Load;
 
             ResumeLayout(false);
             PerformLayout();

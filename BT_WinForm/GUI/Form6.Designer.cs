@@ -21,11 +21,6 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             label1 = new Label();
@@ -39,7 +34,7 @@
             btnThoat = new Button();
             SuspendLayout();
 
-            // label1 - Số x
+            // label1
             label1.AutoSize = true;
             label1.Location = new Point(20, 25);
             label1.Text = "Số x";
@@ -48,7 +43,7 @@
             tbSoX.Location = new Point(120, 22);
             tbSoX.Size = new Size(200, 27);
 
-            // label2 - Số y
+            // label2
             label2.AutoSize = true;
             label2.Location = new Point(20, 65);
             label2.Text = "Số y";
@@ -57,7 +52,7 @@
             tbSoY.Location = new Point(120, 62);
             tbSoY.Size = new Size(200, 27);
 
-            // label3 - Kết quả
+            // label3
             label3.AutoSize = true;
             label3.Location = new Point(20, 105);
             label3.Text = "Kết quả";
@@ -85,7 +80,7 @@
             btnThoat.Text = "Thoát";
             btnThoat.Click += btnThoat_Click;
 
-            // Form7
+            // Form6
             ClientSize = new Size(360, 210);
             Controls.Add(label1);
             Controls.Add(tbSoX);
@@ -96,7 +91,7 @@
             Controls.Add(btnCong);
             Controls.Add(btnNhan);
             Controls.Add(btnThoat);
-            Name = "Form7";
+            Name = "Form6";
             Text = "Calculator";
 
             ResumeLayout(false);

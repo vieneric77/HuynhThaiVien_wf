@@ -21,11 +21,6 @@
         }
 
         #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             cb_Faculty = new ComboBox();
@@ -47,13 +42,12 @@
             tbDisplay.Name = "tbDisplay";
             tbDisplay.Size = new Size(300, 120);
 
-            // button1 (nếu chưa dùng có thể ẩn)
+            // button1
             button1.Location = new Point(20, 195);
             button1.Name = "button1";
             button1.Size = new Size(90, 30);
             button1.Text = "Thoát";
             button1.UseVisualStyleBackColor = true;
-            // button1.Click += button1_Click; // nếu có xử lý thì mở lại
 
             // btOK
             btOK.Location = new Point(230, 195);

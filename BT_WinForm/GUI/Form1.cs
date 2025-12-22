@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
-namespace BT_WinForm.GUI
+namespace BT_WinForm
 {
     public partial class Form1 : Form
     {
@@ -17,12 +12,19 @@ namespace BT_WinForm.GUI
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(
+                $"Name: {txtName.Text}\n" +
+                $"Value: {numericUpDown1.Value}\n" +
+                $"CheckBox: {checkBox1.Checked}\n" +
+                $"Radio: {radioButton1.Checked}\n" +
+                $"Date: {dateTimePicker1.Value.ToShortDateString()}",
+                "Thông tin"
+            );
         }
 
-        private void txtBox1_TextChanged(object sender, EventArgs e)
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

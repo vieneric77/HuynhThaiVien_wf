@@ -12,22 +12,27 @@ namespace BT_WinForm
 
         private void Form13_Load(object sender, EventArgs e)
         {
-            // Thêm danh sách bài hát ban đầu
-            lbSong.Items.Add("Giấc mơ Chapi");
-            lbSong.Items.Add("Đôi mắt Pleiku");
-            lbSong.Items.Add("Em muốn sống bên anh trọn đời");
-            lbSong.Items.Add("H’Zen lên rẫy");
-            lbSong.Items.Add("Còn thương nhau thì về Buôn Mê Thuột");
-            lbSong.Items.Add("Ly cà phê Ban Mê");
-            lbSong.Items.Add("Đi tìm lời ru mặt trời");
+            // Thêm dữ liệu bài hát
+            lbSong.Items.Add(new Song { Id = 53418, Name = "Giấc mơ Chapi", Author = "Trần Tiến" });
+            lbSong.Items.Add(new Song { Id = 52616, Name = "Đôi mắt Pleiku", Author = "Nguyễn Cường" });
+            lbSong.Items.Add(new Song { Id = 51172, Name = "Em muốn sống bên anh trọn đời", Author = "Nguyễn Cường" });
+            lbSong.Items.Add(new Song { Id = 50432, Name = "H’Zen lên rẫy", Author = "Nguyễn Cường" });
+            lbSong.Items.Add(new Song { Id = 50123, Name = "Còn thương nhau thì về Buôn Mê Thuột", Author = "Nguyễn Cường" });
+            lbSong.Items.Add(new Song { Id = 50789, Name = "Ly cà phê Ban Mê", Author = "Nguyễn Cường" });
+            lbSong.Items.Add(new Song { Id = 50999, Name = "Đi tìm lời ru mặt trời", Author = "Nguyễn Cường" });
+
+            // Hiển thị chỉ tên bài hát bên trái
+            lbSong.DisplayMember = "DisplayName";
+            lbFavorite.DisplayMember = "DisplayFull";
         }
 
         private void btSelect_Click(object sender, EventArgs e)
         {
             if (lbSong.SelectedItem != null)
             {
-                lbFavorite.Items.Add(lbSong.SelectedItem);
-                lbSong.Items.Remove(lbSong.SelectedItem);
+                Song selected = lbSong.SelectedItem as Song;
+                lbFavorite.Items.Add(selected);  // bên phải hiển thị đầy đủ
+                lbSong.Items.Remove(selected);
             }
         }
 
@@ -35,48 +40,39 @@ namespace BT_WinForm
         {
             if (lbFavorite.SelectedItem != null)
             {
-                lbSong.Items.Add(lbFavorite.SelectedItem);
-                lbFavorite.Items.Remove(lbFavorite.SelectedItem);
+                Song selected = lbFavorite.SelectedItem as Song;
+                lbSong.Items.Add(selected);  // quay về hiển thị tên
+                lbFavorite.Items.Remove(selected);
             }
         }
 
         private void btSelectAll_Click(object sender, EventArgs e)
         {
-            foreach (var item in lbSong.Items)
-                lbFavorite.Items.Add(item);
-
+            foreach (Song s in lbSong.Items)
+                lbFavorite.Items.Add(s);
             lbSong.Items.Clear();
         }
 
         private void btDeselectAll_Click(object sender, EventArgs e)
         {
-            foreach (var item in lbFavorite.Items)
-                lbSong.Items.Add(item);
-
+            foreach (Song s in lbFavorite.Items)
+                lbSong.Items.Add(s);
             lbFavorite.Items.Clear();
         }
 
         private void lbSong_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lbSong.SelectedItem != null)
-            {
-                lbFavorite.Items.Add(lbSong.SelectedItem);
-                lbSong.Items.Remove(lbSong.SelectedItem);
-            }
+            btSelect_Click(sender, e);
         }
 
         private void lbFavorite_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lbFavorite.SelectedItem != null)
-            {
-                lbSong.Items.Add(lbFavorite.SelectedItem);
-                lbFavorite.Items.Remove(lbFavorite.SelectedItem);
-            }
+            btDeselect_Click(sender, e);
         }
 
         private void lbSong_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Không cần xử lý
         }
     }
 }

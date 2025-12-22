@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BT_WinForm", "BT_WinForm\BT_WinForm.csproj", "{F0595882-E1E1-480F-80D0-B546A6AC6861}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{5A4CF742-6ADF-4457-A587-134071C23AC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F0595882-E1E1-480F-80D0-B546A6AC6861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0595882-E1E1-480F-80D0-B546A6AC6861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0595882-E1E1-480F-80D0-B546A6AC6861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4CF742-6ADF-4457-A587-134071C23AC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4CF742-6ADF-4457-A587-134071C23AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4CF742-6ADF-4457-A587-134071C23AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4CF742-6ADF-4457-A587-134071C23AC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

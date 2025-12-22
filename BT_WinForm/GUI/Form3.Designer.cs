@@ -71,12 +71,12 @@
             button2.Text = "Thoát";
             button2.Click += button2_Click;
 
-            // Form
+            // Form3
             ClientSize = new Size(410, 400);
             Controls.AddRange(new Control[]
             {
-        tbName, groupBox1, ckDiscount,
-        tbDiscount, tbResult, btRun_Click, button2
+                 tbName, groupBox1, ckDiscount,
+                 tbDiscount, tbResult, btRun_Click, button2
             });
 
             Text = "Giảm Giá";
