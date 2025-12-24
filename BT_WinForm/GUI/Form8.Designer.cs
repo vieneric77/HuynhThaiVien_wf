@@ -38,91 +38,128 @@
             // 
             label1.AutoSize = true;
             label1.Location = new Point(20, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(73, 20);
+            label1.TabIndex = 0;
             label1.Text = "Họ và tên";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(20, 65);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 20);
+            label2.TabIndex = 1;
             label2.Text = "Ngày sinh";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(20, 105);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 20);
+            label3.TabIndex = 2;
             label3.Text = "Giới tính";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(20, 155);
+            label4.Name = "label4";
+            label4.Size = new Size(43, 20);
+            label4.TabIndex = 3;
             label4.Text = "Khoa";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(20, 195);
+            label5.Name = "label5";
+            label5.Size = new Size(75, 20);
+            label5.TabIndex = 4;
             label5.Text = "Trạng thái";
             // 
             // txtHoTen
             // 
             txtHoTen.Location = new Point(100, 22);
+            txtHoTen.Name = "txtHoTen";
             txtHoTen.Size = new Size(220, 27);
+            txtHoTen.TabIndex = 5;
             // 
             // dtpNgaySinh
             // 
             dtpNgaySinh.Format = DateTimePickerFormat.Short;
             dtpNgaySinh.Location = new Point(100, 62);
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(rdoNam);
-            groupBox1.Controls.Add(rdoNu);
-            groupBox1.Location = new Point(100, 95);
-            groupBox1.Size = new Size(220, 45);
+            dtpNgaySinh.Name = "dtpNgaySinh";
+            dtpNgaySinh.Size = new Size(200, 27);
+            dtpNgaySinh.TabIndex = 6;
             // 
             // rdoNam
             // 
             rdoNam.AutoSize = true;
             rdoNam.Location = new Point(20, 15);
+            rdoNam.Name = "rdoNam";
+            rdoNam.Size = new Size(62, 24);
+            rdoNam.TabIndex = 0;
             rdoNam.Text = "Nam";
             // 
             // rdoNu
             // 
             rdoNu.AutoSize = true;
             rdoNu.Location = new Point(120, 15);
+            rdoNu.Name = "rdoNu";
+            rdoNu.Size = new Size(50, 24);
+            rdoNu.TabIndex = 1;
             rdoNu.Text = "Nữ";
             // 
             // cboKhoa
             // 
             cboKhoa.DropDownStyle = ComboBoxStyle.DropDownList;
             cboKhoa.Location = new Point(100, 152);
+            cboKhoa.Name = "cboKhoa";
             cboKhoa.Size = new Size(220, 28);
+            cboKhoa.TabIndex = 8;
             // 
             // lstThongTin
             // 
             lstThongTin.Location = new Point(100, 195);
-            lstThongTin.Size = new Size(350, 120);
+            lstThongTin.Name = "lstThongTin";
+            lstThongTin.Size = new Size(350, 104);
+            lstThongTin.TabIndex = 9;
             // 
             // btnThem
             // 
             btnThem.Location = new Point(120, 330);
+            btnThem.Name = "btnThem";
             btnThem.Size = new Size(100, 35);
+            btnThem.TabIndex = 10;
             btnThem.Text = "Thêm";
             btnThem.Click += btnThem_Click;
             // 
             // btnThoat
             // 
             btnThoat.Location = new Point(260, 330);
+            btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(100, 35);
+            btnThoat.TabIndex = 11;
             btnThoat.Text = "Thoát";
             btnThoat.Click += btnThoat_Click;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(rdoNam);
+            groupBox1.Controls.Add(rdoNu);
+            groupBox1.Location = new Point(100, 95);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(220, 45);
+            groupBox1.TabIndex = 7;
+            groupBox1.TabStop = false;
             // 
             // Form8
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(500, 390);
+            ClientSize = new Size(468, 390);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(label3);
