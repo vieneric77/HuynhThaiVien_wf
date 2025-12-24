@@ -1,4 +1,4 @@
-namespace Game
+﻿namespace Game
 {
     internal static class Program
     {

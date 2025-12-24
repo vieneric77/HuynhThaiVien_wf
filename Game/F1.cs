@@ -1,60 +1,58 @@
 ﻿using System;
 using System.Drawing;
-using System.Media;
 using System.Windows.Forms;
-using Timer = System.Windows.Forms.Timer;
-using WMPLib;
 using System.IO;
+using System.Drawing.Drawing2D;
 
 namespace Game
 {
     public partial class F1 : Form
     {
-        enum GameState { Home, Playing, GameOver }
+        enum GameState { Home, Playing, GameOver, Win, Setting }
         GameState currentState = GameState.Home;
 
-        Timer gameTimer, aniTimer;
-        WindowsMediaPlayer bgmPlayer;
-        PictureBox pbSonic, pbObstacle;
+        System.Windows.Forms.Timer gameTimer;
+        Rectangle rectSonic, rectObstacle, rectDragon, rectFireball, rectSonicShot;
 
-        // --- CÁC BIẾN CHO RỒNG VÀ CẦU LỬA ---
-        PictureBox pbDragon, pbFireball;
+        int sonicW, sonicH, dragonSize, obstacleSize;
+        int dragonHP = 10;
+        bool isSonicShooting = false;
+        float currentSpeed;
+        int dragonDirection = 1;
+        int dragonSpeed = 5;
+
+        // --- BIẾN CHO NỀN VÀ LEVEL ---
+        float bgX = 0;
+        float bgSpeed = 12f; // Tăng tốc độ nền cơ bản (Level 1 nhanh hơn)
+        int level = 1;
+
+        Image bgImg, imgSonicJump, imgSonicFall;
         Image[] dragonFrames = new Image[4];
-        Image[] fireballFrames = new Image[2]; // Mảng chứa 2 khung hình cầu lửa
-        int currentDragonFrame = 0;
-        int currentFireballFrame = 0; // Biến đếm khung hình cầu lửa
-        bool isDragonActive = false;
-        float fireballSpeed = 12.0f;
+        Image[] fireballFrames = new Image[2];
+        Image[] downFrames = new Image[5];
+        Image[] sonicFrames = new Image[4];
+        Image[] cocImages = new Image[3];
+        Image currentObstacleImg;
 
-        Label lbScore, lbHearts;
-        Button btStart, btExit, btHome;
+        int frameCounter = 0;
+        int currentDragonFrame, currentFireballFrame, currentDownFrame, currentSonicFrame;
+        bool isCrouching, isJumping, isDragonActive;
+        int score, hearts, jumpSpeed, groundY, gravity = 4; // Tăng gravity để rơi nhanh hơn phù hợp tốc độ
         Random rd = new Random();
 
-        int bgX1 = 0;
-        int bgX2;
-        bool isJumping = false;
-        int jumpSpeed = 0;
-        int gravity = 1;
-        int groundY;
-
-        float obstacleSpeed = 8.0f;
-        Image[] cocImages = new Image[3];
-        int score = 0;
-        int hearts = 3;
-
-        Image[] sonicFrames = new Image[4];
-        int currentSonicFrame = 0;
-        Image bgImg;
-        SoundPlayer hitSound, gameOverSound, jumpSound;
+        Panel settingPanel;
 
         public F1()
         {
-            InitializeComponent();
             this.DoubleBuffered = true;
-            this.KeyPreview = true;
-            this.KeyDown += F1_KeyDown;
-            this.Resize += F1_Resize;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
+
             this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.KeyDown += F1_KeyDown;
+            this.KeyUp += F1_KeyUp;
+            this.Load += Form1_Load;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,232 +60,259 @@ namespace Game
             try
             {
                 string imgPath = Path.Combine(Application.StartupPath, "Images");
-                string soundPath = Path.Combine(Application.StartupPath, "Sounds");
-
-                // Tải tài nguyên cơ bản
                 bgImg = Image.FromFile(Path.Combine(imgPath, "background.jpg"));
                 for (int i = 0; i < 3; i++) cocImages[i] = Image.FromFile(Path.Combine(imgPath, $"coc{i + 1}.png"));
                 for (int i = 0; i < 4; i++) sonicFrames[i] = Image.FromFile(Path.Combine(imgPath, $"sonic{i + 1}.png"));
-
-                // TẢI ẢNH RỒNG VÀ CẦU LỬA (ĐÃ CẬP NHẬT)
+                imgSonicJump = Image.FromFile(Path.Combine(imgPath, "nhaylen.png"));
+                imgSonicFall = Image.FromFile(Path.Combine(imgPath, "nhayxuong.png"));
+                for (int i = 0; i < 5; i++) downFrames[i] = Image.FromFile(Path.Combine(imgPath, $"down{i + 1}.png"));
                 for (int i = 0; i < 4; i++) dragonFrames[i] = Image.FromFile(Path.Combine(imgPath, $"rong{i + 1}.png"));
                 fireballFrames[0] = Image.FromFile(Path.Combine(imgPath, "caulua.png"));
                 fireballFrames[1] = Image.FromFile(Path.Combine(imgPath, "caulua1.png"));
 
-                hitSound = new SoundPlayer(Path.Combine(soundPath, "hit.wav"));
-                gameOverSound = new SoundPlayer(Path.Combine(soundPath, "gameover.wav"));
-                jumpSound = new SoundPlayer(Path.Combine(soundPath, "tiengga.wav"));
-
-                bgmPlayer = new WindowsMediaPlayer();
-                bgmPlayer.settings.volume = 40;
-
-                // Khởi tạo PictureBox
-                pbDragon = new PictureBox { Size = new Size(200, 200), SizeMode = PictureBoxSizeMode.StretchImage, BackColor = Color.Transparent, Visible = false };
-                pbFireball = new PictureBox { Size = new Size(80, 50), Image = fireballFrames[0], SizeMode = PictureBoxSizeMode.StretchImage, BackColor = Color.Transparent, Visible = false };
-
+                InitializeSettingPanel();
                 ShowHome();
             }
-            catch (Exception ex) { MessageBox.Show("Lỗi tải tài nguyên: " + ex.Message); Application.Exit(); }
+            catch (Exception ex) { MessageBox.Show("Lỗi nạp ảnh: " + ex.Message); }
         }
 
-        private void F1_Resize(object sender, EventArgs e)
+        void InitializeSettingPanel()
         {
-            bgX2 = this.ClientSize.Width;
-            if (currentState == GameState.Playing)
-            {
-                groundY = this.ClientSize.Height - 160;
-                if (!isJumping) pbSonic.Top = groundY;
-                pbObstacle.Top = groundY + 15;
-                pbDragon.Location = new Point(this.ClientSize.Width - 250, groundY - 150);
-            }
-            else CenterMenuControls();
-        }
+            settingPanel = new Panel { Size = new Size(300, 400), BackColor = Color.FromArgb(220, Color.Black), Visible = false };
+            settingPanel.Left = (this.ClientSize.Width - settingPanel.Width) / 2;
+            settingPanel.Top = (this.ClientSize.Height - settingPanel.Height) / 2;
 
-        private void CenterMenuControls()
-        {
-            foreach (Control c in this.Controls)
-                if (c is Button || c is Label) c.Left = (this.ClientSize.Width - c.Width) / 2;
+            Button btnResume = new Button { Text = "TIẾP TỤC", Size = new Size(200, 50), Top = 80, Left = 50, FlatStyle = FlatStyle.Flat, BackColor = Color.White, Font = new Font("Arial", 12, FontStyle.Bold) };
+            btnResume.Click += (s, e) => { settingPanel.Visible = false; gameTimer.Start(); currentState = GameState.Playing; };
+
+            Button btnHome = new Button { Text = "TRANG CHỦ", Size = new Size(200, 50), Top = 160, Left = 50, FlatStyle = FlatStyle.Flat, BackColor = Color.White, Font = new Font("Arial", 12, FontStyle.Bold) };
+            btnHome.Click += (s, e) => { settingPanel.Visible = false; ShowHome(); };
+
+            Button btnExit = new Button { Text = "THOÁT", Size = new Size(200, 50), Top = 240, Left = 50, FlatStyle = FlatStyle.Flat, BackColor = Color.Red, ForeColor = Color.White, Font = new Font("Arial", 12, FontStyle.Bold) };
+            btnExit.Click += (s, e) => Application.Exit();
+
+            settingPanel.Controls.Add(btnResume); settingPanel.Controls.Add(btnHome); settingPanel.Controls.Add(btnExit);
+            this.Controls.Add(settingPanel);
         }
 
         void ShowHome()
         {
+            if (gameTimer != null) gameTimer.Stop();
             currentState = GameState.Home;
-            Controls.Clear();
-            bgX1 = 0;
-            bgX2 = this.ClientSize.Width;
+            this.Controls.Clear();
+            this.Controls.Add(settingPanel);
 
-            Label title = new Label { Text = "SONIC vs DRAGON", Font = new Font("Segoe UI", 55, FontStyle.Bold), ForeColor = Color.DeepSkyBlue, BackColor = Color.Transparent, AutoSize = true };
-            btStart = new Button { Text = "BẮT ĐẦU", Size = new Size(250, 60), Font = new Font("Arial", 14), FlatStyle = FlatStyle.Flat, BackColor = Color.White };
-            btStart.Click += (s, e) => StartGame();
+            Button btStart = new Button { Text = "BẮT ĐẦU", Size = new Size(240, 70), Left = (this.ClientSize.Width - 240) / 2, Top = (this.ClientSize.Height / 2) - 35, Font = new Font("Arial", 16, FontStyle.Bold), BackColor = Color.Orange, FlatStyle = FlatStyle.Flat };
+            btStart.Click += (s, ev) => StartGame();
 
-            this.Controls.Add(title); this.Controls.Add(btStart);
-            title.Location = new Point(0, 150); btStart.Location = new Point(0, 320);
-            CenterMenuControls();
+            Button btExit = new Button { Text = "THOÁT", Size = new Size(240, 70), Left = (this.ClientSize.Width - 240) / 2, Top = (this.ClientSize.Height / 2) + 60, Font = new Font("Arial", 16, FontStyle.Bold), BackColor = Color.LightGray, FlatStyle = FlatStyle.Flat };
+            btExit.Click += (s, ev) => Application.Exit();
+
+            this.Controls.Add(btStart); this.Controls.Add(btExit);
         }
 
         void StartGame()
         {
+            this.Controls.Clear();
+            this.Controls.Add(settingPanel);
+
+            Button btnSetting = new Button { Text = "⚙", Size = new Size(50, 50), Top = 20, Left = this.Width - 80, FlatStyle = FlatStyle.Flat, BackColor = Color.Transparent, ForeColor = Color.Yellow, Font = new Font("Arial", 25) };
+            btnSetting.Click += (s, e) => { gameTimer.Stop(); currentState = GameState.Setting; settingPanel.BringToFront(); settingPanel.Visible = true; };
+            this.Controls.Add(btnSetting);
+
             currentState = GameState.Playing;
-            Controls.Clear();
-            score = 0; hearts = 3; obstacleSpeed = 8.0f;
+            groundY = (int)(this.ClientSize.Height * 0.90f);
+            sonicW = (int)(this.ClientSize.Width * 0.07f);
+            sonicH = (int)(sonicW * 1.2f);
+            dragonSize = (int)(this.ClientSize.Height * 0.35f);
+            obstacleSize = (int)(this.ClientSize.Height * 0.16f);
+
+            // --- RESET THÔNG SỐ GAME VỚI TỐC ĐỘ CAO ---
+            score = 0;
+            level = 1;
+            hearts = 3;
+            dragonHP = 10;
+            currentSpeed = 25f; // Khởi đầu nhanh (Cũ là 16)
+            bgSpeed = 12f;      // Khởi đầu nhanh (Cũ là 6)
+            bgX = 0;
             isDragonActive = false;
-            groundY = this.ClientSize.Height - 160;
+            isSonicShooting = false;
 
-            lbScore = new Label { Text = "Điểm: 0", Font = new Font("Arial", 20, FontStyle.Bold), ForeColor = Color.Yellow, BackColor = Color.Transparent, Location = new Point(30, 30), AutoSize = true };
-            lbHearts = new Label { Text = "Mạng: ❤️❤️❤️", Font = new Font("Arial", 20), ForeColor = Color.Red, BackColor = Color.Transparent, Location = new Point(30, 75), AutoSize = true };
-
-            pbSonic = new PictureBox { Size = new Size(100, 130), Image = sonicFrames[0], SizeMode = PictureBoxSizeMode.StretchImage, BackColor = Color.Transparent, Location = new Point(120, groundY) };
-            pbObstacle = new PictureBox { Size = new Size(110, 120), SizeMode = PictureBoxSizeMode.StretchImage, BackColor = Color.Transparent };
+            rectSonic = new Rectangle(150, groundY - sonicH, sonicW, sonicH);
+            rectDragon = new Rectangle(this.Width - dragonSize - 50, 100, dragonSize, dragonSize);
+            rectFireball = new Rectangle(-500, 0, (int)(sonicW * 0.8f), (int)(sonicW * 0.5f));
+            rectSonicShot = new Rectangle(-500, 0, (int)(sonicW * 0.8f), (int)(sonicW * 0.5f));
 
             ResetObstacle();
 
-            this.Controls.Add(lbScore); this.Controls.Add(lbHearts);
-            this.Controls.Add(pbSonic); this.Controls.Add(pbObstacle);
-            this.Controls.Add(pbFireball); this.Controls.Add(pbDragon);
-
-            pbDragon.Location = new Point(this.ClientSize.Width - 250, groundY - 150);
-            pbDragon.Visible = false;
-            pbFireball.Visible = false;
-
-            gameTimer = new Timer { Interval = 15 };
-            gameTimer.Tick += GameTimer_Tick;
+            gameTimer = new System.Windows.Forms.Timer { Interval = 16 };
+            gameTimer.Tick += (s, e) => { UpdatePhysics(); UpdateAnimations(); this.Invalidate(); };
             gameTimer.Start();
-
-            aniTimer = new Timer { Interval = 70 };
-            aniTimer.Tick += (s, e) => {
-                // Hoạt ảnh Sonic
-                if (!isJumping)
-                {
-                    currentSonicFrame = (currentSonicFrame + 1) % 4;
-                    pbSonic.Image = sonicFrames[currentSonicFrame];
-                }
-                // Hoạt ảnh Rồng và Cầu Lửa (ĐÃ CẬP NHẬT)
-                if (isDragonActive)
-                {
-                    currentDragonFrame = (currentDragonFrame + 1) % 4;
-                    pbDragon.Image = dragonFrames[currentDragonFrame];
-
-                    currentFireballFrame = (currentFireballFrame + 1) % 2;
-                    pbFireball.Image = fireballFrames[currentFireballFrame];
-                }
-            };
-            aniTimer.Start();
         }
 
-        private void GameTimer_Tick(object sender, EventArgs e)
+        void UpdatePhysics()
         {
-            bgX1 -= (int)obstacleSpeed;
-            bgX2 -= (int)obstacleSpeed;
-            if (bgX1 <= -this.ClientSize.Width) bgX1 = bgX2 + this.ClientSize.Width;
-            if (bgX2 <= -this.ClientSize.Width) bgX2 = bgX1 + this.ClientSize.Width;
-            this.Invalidate();
+            if (currentState != GameState.Playing) return;
 
+            // 1. CẬP NHẬT TỐC ĐỘ THEO LEVEL (Nhanh dần đều)
+            level = (score / 10) + 1;
+            bgSpeed = 12f + (level * 2f);       // Nền chạy nhanh hơn
+            currentSpeed = 25f + (level * 3f);  // Vật cản nhanh hơn
+
+            bgX -= bgSpeed;
+            if (bgX <= -this.ClientSize.Width) bgX = 0;
+
+            // 2. LOGIC NHẢY
             if (isJumping)
             {
-                pbSonic.Top -= jumpSpeed;
+                rectSonic.Y -= jumpSpeed;
                 jumpSpeed -= gravity;
-                if (pbSonic.Top >= groundY) { pbSonic.Top = groundY; isJumping = false; }
-            }
-
-            pbObstacle.Left -= (int)obstacleSpeed;
-            if (pbObstacle.Right < 0)
-            {
-                score++;
-                lbScore.Text = $"Điểm: {score}";
-                obstacleSpeed += 0.2f;
-                ResetObstacle();
-
-                if (score >= 10 && !isDragonActive)
+                if (rectSonic.Y >= groundY - rectSonic.Height)
                 {
-                    isDragonActive = true;
-                    pbDragon.Visible = true;
-                    ResetFireball();
+                    rectSonic.Y = groundY - rectSonic.Height;
+                    isJumping = false;
                 }
             }
 
-            if (isDragonActive)
+            // 3. ĐIỀU KIỆN HIỆN RỒNG
+            if (score >= 30 && !isDragonActive) { isDragonActive = true; ResetFireball(); }
+
+            if (!isDragonActive)
             {
-                pbFireball.Left -= (int)fireballSpeed;
-                if (pbFireball.Right < 0) ResetFireball();
-
-                if (pbSonic.Bounds.IntersectsWith(pbFireball.Bounds)) HandleCollision();
+                rectObstacle.X -= (int)currentSpeed;
+                if (rectObstacle.Right < 0) { score++; ResetObstacle(); }
+                if (rectSonic.IntersectsWith(rectObstacle)) HandleHit();
             }
+            else
+            {
+                int currentDragonSpeed = dragonSpeed + (level / 2);
+                rectDragon.Y += (dragonDirection * currentDragonSpeed);
+                if (rectDragon.Y < 50 || rectDragon.Bottom > groundY) dragonDirection *= -1;
 
-            Rectangle sRect = new Rectangle(pbSonic.Left + 25, pbSonic.Top + 10, pbSonic.Width - 50, pbSonic.Height - 20);
-            Rectangle oRect = new Rectangle(pbObstacle.Left + 20, pbObstacle.Top + 20, pbObstacle.Width - 40, pbObstacle.Height - 30);
-            if (sRect.IntersectsWith(oRect)) HandleCollision();
+                rectFireball.X -= (int)(currentSpeed + 10);
+                if (rectSonic.IntersectsWith(rectFireball)) HandleHit();
+                if (rectFireball.Right < 0) ResetFireball();
+
+                if (isSonicShooting)
+                {
+                    rectSonicShot.X += 50; // Tốc độ đạn Sonic cũng nhanh hơn
+                    if (rectSonicShot.IntersectsWith(rectDragon)) { DamageDragon(); isSonicShooting = false; rectSonicShot.X = -500; }
+                    if (rectSonicShot.X > this.Width) isSonicShooting = false;
+                }
+            }
         }
 
-        void HandleCollision()
+        void UpdateAnimations()
         {
-            try { hitSound.Play(); } catch { }
-            hearts--;
-            UpdateHeartsUI();
-            ResetObstacle();
-            ResetFireball();
-            if (hearts <= 0)
+            frameCounter++;
+            if (frameCounter % 5 == 0)
             {
-                gameTimer.Stop();
-                aniTimer.Stop();
-                try { gameOverSound.Play(); } catch { }
-                EndGame();
+                currentSonicFrame = (currentSonicFrame + 1) % 4;
+                currentDragonFrame = (currentDragonFrame + 1) % 4;
+                currentFireballFrame = (currentFireballFrame + 1) % 2;
+                currentDownFrame = (currentDownFrame + 1) % 5;
             }
-        }
-
-        void ResetFireball()
-        {
-            if (!isDragonActive) return;
-            pbFireball.Visible = true;
-            pbFireball.Location = new Point(pbDragon.Left, pbDragon.Top + 80);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
             if (bgImg != null)
             {
-                e.Graphics.DrawImage(bgImg, bgX1, 0, this.ClientSize.Width + 2, this.ClientSize.Height);
-                e.Graphics.DrawImage(bgImg, bgX2, 0, this.ClientSize.Width + 2, this.ClientSize.Height);
+                g.DrawImage(bgImg, bgX, 0, this.ClientSize.Width + 2, this.ClientSize.Height);
+                g.DrawImage(bgImg, bgX + this.ClientSize.Width, 0, this.ClientSize.Width + 2, this.ClientSize.Height);
+            }
+
+            if (currentState == GameState.Playing || currentState == GameState.Setting)
+            {
+                Image sonicImg;
+                if (isJumping) sonicImg = (jumpSpeed > 0) ? imgSonicJump : imgSonicFall;
+                else if (isCrouching) sonicImg = downFrames[currentDownFrame];
+                else sonicImg = sonicFrames[currentSonicFrame];
+                g.DrawImage(sonicImg, rectSonic);
+
+                if (!isDragonActive)
+                {
+                    if (currentObstacleImg != null) g.DrawImage(currentObstacleImg, rectObstacle);
+                }
+                else
+                {
+                    g.DrawImage(dragonFrames[currentDragonFrame], rectDragon);
+                    g.DrawImage(fireballFrames[currentFireballFrame], rectFireball);
+                    if (isSonicShooting) g.DrawImage(fireballFrames[currentFireballFrame], rectSonicShot);
+                }
+
+                // UI
+                string heartStr = new string('❤', hearts);
+                using (Font f = new Font("Impact", 25))
+                {
+                    g.DrawString($"SCORE: {score}  LVL: {level}  LIFE: {heartStr}", f, Brushes.Yellow, 30, 30);
+                    if (isDragonActive)
+                    {
+                        g.FillRectangle(Brushes.DimGray, this.Width - 350, 40, 300, 20);
+                        g.FillRectangle(Brushes.Red, this.Width - 350, 40, (dragonHP * 30), 20);
+                        g.DrawString("DRAGON HP", new Font("Arial", 10, FontStyle.Bold), Brushes.White, this.Width - 350, 20);
+                    }
+                }
             }
         }
 
         void ResetObstacle()
         {
-            int type = rd.Next(0, 3);
-            pbObstacle.Image = cocImages[type];
-            int minGap = (int)(obstacleSpeed * 40);
-            int randomGap = rd.Next(minGap, minGap + 600);
-            pbObstacle.Location = new Point(this.ClientSize.Width + randomGap, groundY + 15);
+            currentObstacleImg = cocImages[rd.Next(0, 3)];
+            rectObstacle = new Rectangle(this.Width + rd.Next(300, 700), groundY - obstacleSize + 10, obstacleSize, obstacleSize);
         }
 
-        void UpdateHeartsUI()
-        {
-            string heartText = "Mạng: ";
-            for (int i = 0; i < hearts; i++) heartText += "❤️";
-            lbHearts.Text = heartText;
-        }
+        void ResetFireball() { rectFireball.X = rectDragon.X; rectFireball.Y = rectDragon.Y + (rectDragon.Height / 2); }
+        void DamageDragon() { dragonHP--; if (dragonHP <= 0) EndGame("BẠN ĐÃ CHIẾN THẮNG!"); }
+        void HandleHit() { hearts--; if (hearts <= 0) EndGame("GAME OVER!"); else { if (isDragonActive) ResetFireball(); else rectObstacle.X = this.Width + 500; } }
 
         private void F1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (currentState == GameState.Playing && !isJumping)
-                if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
-                {
-                    isJumping = true;
-                    jumpSpeed = 22;
-                    try { jumpSound.Play(); } catch { }
-                }
+            if (e.KeyCode == Keys.Escape && currentState == GameState.Playing)
+            {
+                gameTimer.Stop(); currentState = GameState.Setting; settingPanel.Visible = true;
+            }
+            if (currentState != GameState.Playing) return;
+
+            if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.Up) && !isJumping)
+            {
+                isJumping = true;
+                jumpSpeed = (int)(this.ClientSize.Height * 0.055f); // Tăng lực nhảy một chút để cân bằng gravity
+            }
+
+            if (e.KeyCode == Keys.S && !isJumping)
+            {
+                isCrouching = true;
+                rectSonic.Height = (int)(sonicH * 0.6f);
+                rectSonic.Y = groundY - rectSonic.Height;
+            }
+
+            if (e.KeyCode == Keys.W && !isSonicShooting && isDragonActive)
+            {
+                isSonicShooting = true;
+                rectSonicShot.X = rectSonic.Right;
+                rectSonicShot.Y = rectSonic.Y + (rectSonic.Height / 3);
+            }
         }
 
-        void EndGame()
+        private void F1_KeyUp(object sender, KeyEventArgs e)
         {
-            currentState = GameState.GameOver;
-            Controls.Clear();
-            Label lbOver = new Label { Text = $"GAME OVER\nĐiểm: {score}", Font = new Font("Arial", 35, FontStyle.Bold), ForeColor = Color.White, BackColor = Color.Transparent, AutoSize = true, TextAlign = ContentAlignment.MiddleCenter };
-            btHome = new Button { Text = "THỬ LẠI", Size = new Size(200, 55), Font = new Font("Arial", 12) };
-            btHome.Click += (s, e) => ShowHome();
-            this.Controls.Add(lbOver); this.Controls.Add(btHome);
-            lbOver.Location = new Point(0, 200); btHome.Location = new Point(0, 400);
-            CenterMenuControls();
+            if (e.KeyCode == Keys.S)
+            {
+                isCrouching = false;
+                rectSonic.Height = sonicH;
+                rectSonic.Y = groundY - sonicH;
+            }
+        }
+
+        void EndGame(string msg)
+        {
+            if (gameTimer != null) gameTimer.Stop();
+            MessageBox.Show($"{msg}\n\nLEVEL: {level}\nSCORE: {score}");
+            ShowHome();
         }
     }
 }
